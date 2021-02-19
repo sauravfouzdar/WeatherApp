@@ -1,2 +1,2 @@
 ## Django Weather-App Using openAir API
-### How to start 'Django project'
+### How to create your first `Django Projects`
