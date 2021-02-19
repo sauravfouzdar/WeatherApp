@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forecast24</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Forecast24
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <!--   <input class="input" type="text" placeholder="City Name">  -->
+                                <form method="POST" class="input" type="text" placeholder="City Name">
+                                    {% csrf_token %}
+                                    <div class="field has-addons">
+                                        <div class="control is-expanded">
+                                            {{ form.nameOfCity }}
+                                        </div>
+                                        <div class="control">
+                                            <button class="button is-info">
+                                                Add City
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for i in city_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ i.icon}}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ i.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{i.temperature}}° F</span>
+                                        <br> {{ i.description }}
+                                    </p>
+                                </div>
+                            </div>
+                             <div class="media-right">
+                                <figure class="image is-50x50">
+                                    <a href="{% url 'remove_city' i.city %}"> <i class="fa fa-remove" style="font-size:30px;color:rgb(187, 181, 181)"></i></a>
+                                </figure>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>
