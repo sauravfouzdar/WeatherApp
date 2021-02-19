@@ -1,4 +1,4 @@
-## Django Weather-App Using openAir API
+## Django Weather-App Using openWeather API
 ### How to create your first `Django Projects`
    1. After installing all dependecies in `requirement.txt`
    2. Run following command from terminal Project Directory/
