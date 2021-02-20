@@ -4,5 +4,5 @@
    2. Run following command from terminal Project Directory/
        - Django-admin startproject WeatherApp
        - Python manage.py startapp weather
-       - In `settings.py` add `weather` in INSTALLED_APPS[]
+       - In `settings.py` add `weather` app in INSTALLED_APPS[ ]
    3. Run `Python manage.py` to runserver.
